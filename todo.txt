@@ -1,0 +1,3 @@
+To Do for chat (using flutter and firebase firestore)_
+1. Adding firebase to android,ios,web
+2. initialize firebase app using

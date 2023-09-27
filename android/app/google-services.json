@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "35273348459",
+    "firebase_url": "https://play-connect-726bf-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "play-connect-726bf",
+    "storage_bucket": "play-connect-726bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35273348459:android:808ffc5f1b029d04dbe82e",
+        "android_client_info": {
+          "package_name": "com.example.play_connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnwZmBE6Ae4l900Wc4EPep-II87yF6sCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
