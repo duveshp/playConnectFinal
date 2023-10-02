@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:play_connect/main.dart';
 import 'package:play_connect/services/user_reg_services.dart';
 
 class UserForm extends StatefulWidget {
@@ -119,6 +120,7 @@ class _UserFormState extends State<UserForm> {
                     userAge: userAge,
                   );
                 }
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(),));
               },
               child: Text('Submit'),
             ),

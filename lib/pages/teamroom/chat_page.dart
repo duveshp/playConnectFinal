@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:play_connect/pages/teamroom/group_info.dart';
-import 'package:play_connect/services/database_service.dart';
+import 'package:play_connect/services/groupchat_teams_service.dart';
 import 'package:play_connect/widgets/message_tile.dart';
 import 'package:play_connect/widgets/widgets.dart';
 

@@ -4,6 +4,7 @@ import 'package:play_connect/pages/auth/login_page.dart';
 import 'package:play_connect/pages/auth/register_page.dart';
 import 'package:play_connect/pages/booking_page.dart';
 import 'package:play_connect/pages/home_page.dart';
+import 'package:play_connect/pages/my_bookings.dart';
 import 'package:play_connect/pages/notifications_page.dart';
 import 'package:play_connect/pages/profile_page.dart';
 import 'package:play_connect/pages/teamroom/teamroom_page.dart';
@@ -65,7 +66,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: _isSignedIn ? UserForm():LoginPage(),
+      home: _isSignedIn ? MyBookingsPage():LoginPage(),
     );
   }
 }
@@ -89,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomePage(),
     TeamRoomHomePage(),
     BookingPage(),
-    NotificationsPage(),
+    MyBookingsPage(),
     ProfilePage(),
   ];
 
@@ -143,8 +144,8 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Booking',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
+            icon: Icon(Icons.bookmark_added),
+            label: 'Bookings',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

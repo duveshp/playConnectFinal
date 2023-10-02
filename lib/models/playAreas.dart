@@ -19,6 +19,7 @@ class CatalogModel{
 class PlayArea {
   final int id;
   final String playAreaName;
+  final String playAreaVendor;
   final String playAreaSports;
   final String playAreaLocation;
   final double playAreaPrice;
@@ -27,6 +28,7 @@ class PlayArea {
   PlayArea({
     required this.id,
     required this.playAreaName,
+    required this.playAreaVendor,
     required this.playAreaSports,
     required this.playAreaLocation,
     required this.playAreaPrice,
@@ -35,12 +37,14 @@ class PlayArea {
 
   factory PlayArea.fromJson(Map<String, dynamic> json) {
     return PlayArea(
-      id: json['id'],
-      playAreaName: json['playAreaName'],
-      playAreaSports: json['playAreaSports'],
-      playAreaLocation: json['playAreaLocation'],
-      playAreaPrice: json['playAreaPrice'].toDouble(),
-      playAreaImageUrl: json['playAreaImageUrl'], // Store the image URL as a string
+      id: json['id'] ?? 0, // Provide a default value (e.g., 0) for nullable fields
+      playAreaName: json['playAreaName'] ?? 'Unknown',
+      playAreaSports: json['playAreaSports'] ?? 'Unknown',
+      playAreaLocation: json['playAreaLocation'] ?? 'Unknown',
+      playAreaPrice: (json['playAreaPrice'] as num?)?.toDouble() ?? 0.0,
+      playAreaVendor: json['playAreaVendor'] ?? 'Unknown',
+      playAreaImageUrl: json['playAreaImageUrl'] ?? 'No Image', // Provide a default URL or message
     );
   }
+
 }

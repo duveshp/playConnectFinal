@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:play_connect/calendar_page.dart';
 import 'package:play_connect/cart.dart';
+import 'package:play_connect/pages/bookingForm.dart';
 import 'package:play_connect/store.dart';
 import 'package:play_connect/widgets/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -17,81 +18,12 @@ class BookingPage extends StatefulWidget {
   _BookingPageState createState() => _BookingPageState();
 }
 class _BookingPageState extends State<BookingPage> {
-  DateTime? startDate;
-  DateTime selectedDate = DateTime.now();
-  TimeOfDay selectedFromTime = TimeOfDay.now();
-  TimeOfDay selectedToTime = TimeOfDay.now();
+
   late Future<List<PlayArea>> _playAreas;
 
-  Future<void> _showBookingDialog(BuildContext context) async {
-    Future<void> _selectDate() async {
-      final pickedDate = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime.now(),
-        lastDate: DateTime(2101),
-      );
-
-      if (pickedDate != null && pickedDate != selectedDate) {
-        setState(() {
-          selectedDate = pickedDate;
-        });
-      }
-    }
-
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Book Now'),
-          content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                // Date Picker
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Text(
-                    'Select Date:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => _selectDate(),
-                  child: Text(
-                    selectedDate.toLocal().toString().split(' ')[0],
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Perform booking logic here
-                // Show the confirmation dialog
-                _showConfirmationDialog(context);
-              },
-              child: Text('Book'),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
 
-
-
-
-  Future<void> _showConfirmationDialog(BuildContext context) async {
+  Future<void> _showConfirmationDialog(BuildContext context, DateTime selectedDate) async {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -140,11 +72,13 @@ class _BookingPageState extends State<BookingPage> {
                   Text('Error: ${snapshot.error}'),
                   ElevatedButton(
                     onPressed: () {
+                      print(snapshot);
                       setState(() {
                         _playAreas = fetchPlayAreas(); // Retry fetching data on button press
                       });
                     },
                     child: Text('Retry'),
+
                   ),
                 ],
               ),
@@ -209,7 +143,7 @@ class _BookingPageState extends State<BookingPage> {
                         GestureDetector(
                           onTap: (){
                             print("pressed BookNow");
-                            _showBookingDialog(context);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => BookingForm(playArea.playAreaName,playArea.playAreaVendor),));;
                           },
                           child: Container(
                             height: 50,

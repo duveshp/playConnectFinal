@@ -5,7 +5,7 @@ import 'package:play_connect/pages/profile_page.dart';
 import 'package:play_connect/pages/teamroom/joined_teamrooms.dart';
 import 'package:play_connect/pages/teamroom/search_page.dart';
 import 'package:play_connect/services/auth_services.dart';
-import 'package:play_connect/services/database_service.dart';
+import 'package:play_connect/services/groupchat_teams_service.dart';
 import 'package:play_connect/widgets/widgets.dart';
 
 class TeamRoomHomePage extends StatefulWidget {

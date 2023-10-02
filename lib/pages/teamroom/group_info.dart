@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:play_connect/pages/teamroom/teamroom_page.dart';
-import 'package:play_connect/services/database_service.dart';
+import 'package:play_connect/services/groupchat_teams_service.dart';
 import 'package:play_connect/widgets/widgets.dart';
 
 class GroupInfo extends StatefulWidget {

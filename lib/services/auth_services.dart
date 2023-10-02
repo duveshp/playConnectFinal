@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:play_connect/helper/helper_function.dart';
-import 'package:play_connect/services/database_service.dart';
+import 'package:play_connect/services/groupchat_teams_service.dart';
 
 class AuthService{
   final FirebaseAuth firebaseAuth= FirebaseAuth.instance;

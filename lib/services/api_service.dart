@@ -16,6 +16,7 @@ Future<List<PlayArea>> fetchPlayAreas() async {
           'playAreaSports': data['playAreaSports'],
           'playAreaLocation': data['playAreaLocation'],
           'playAreaPrice': data['playAreaPrice'],
+          'playAreaVendor': data['playAreaVendor'],
           'playAreaImageUrl': data['playAreaImageUrl'], // Include the image URL
         },
       );
