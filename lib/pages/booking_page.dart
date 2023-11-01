@@ -5,12 +5,13 @@ import 'package:play_connect/pages/bookingForm.dart';
 import 'package:play_connect/store.dart';
 import 'package:play_connect/widgets/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../helper/apiUrl.dart';
 import '../models/playAreas.dart';
 import '../services/api_service.dart';
 import '../widgets/playAreaList.dart';
 import 'package:intl/intl.dart';
 
-final baseImageUrl = "http://192.168.0.103:8000/restfinal";
+final baseImageUrl = "${apiHostUrl}/restfinal";
 
 class BookingPage extends StatefulWidget {
 
@@ -65,6 +66,7 @@ class _BookingPageState extends State<BookingPage> {
               child: CircularProgressIndicator(), // Use a custom loading widget if needed
             );
           } else if (snapshot.hasError) {
+            print(snapshot.error);
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -88,9 +90,11 @@ class _BookingPageState extends State<BookingPage> {
 
             if (playAreas != null && playAreas.isNotEmpty) {
               return ListView.builder(
+
                 itemCount: playAreas.length,
                 itemBuilder: (context, index) {
                   final playArea = playAreas[index];
+                  // print("Image Text:${baseImageUrl+playArea.playAreaImageUrl}");
                   return Container(
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(10),
@@ -115,13 +119,15 @@ class _BookingPageState extends State<BookingPage> {
                         ),
                         SizedBox(height: 10,),
 
-                        Container(
-                          height: 150,
-                          // padding: EdgeInsets.all(10),
-                          // margin: EdgeInsets.all(10),
-                          width: MediaQuery.of(context).size.width,
-                          // color: Colors.blueGrey[100],
-                          child: Image.network(baseImageUrl+playArea.playAreaImageUrl,fit: BoxFit.contain),
+                        Expanded(
+                          child: Container(
+                            height: 140,
+                            // padding: EdgeInsets.all(10),
+                            // margin: EdgeInsets.all(10),
+                            width: MediaQuery.of(context).size.width,
+                            // color: Colors.blueGrey[100],
+                            child: Image.network(baseImageUrl+playArea.playAreaImageUrl,fit: BoxFit.cover),
+                          ),
                         ),
                         SizedBox(height: 10,),
                         Row(
@@ -146,7 +152,7 @@ class _BookingPageState extends State<BookingPage> {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => BookingForm(playArea.playAreaName,playArea.playAreaVendor),));;
                           },
                           child: Container(
-                            height: 50,
+                            height: 45,
 
                             color: Colors.blueGrey,
                             alignment: Alignment.center,

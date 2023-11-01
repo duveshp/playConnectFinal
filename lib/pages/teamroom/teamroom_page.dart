@@ -58,7 +58,7 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2, // Number of tabs
+      length: 1, // Number of tabs
       child: Scaffold(
         appBar: AppBar(
           actions: [
@@ -79,7 +79,7 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
           bottom: TabBar(
             tabs: [
               Tab(text: 'Joined Teams'),
-              Tab(text: 'Active Team Rooms'),
+              // Tab(text: 'Active Team Rooms'),
             ],
           ),
         ),
@@ -87,11 +87,11 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
           children: [
             // Your tab content
             JoinedTeamRoom(),
-            ActiveTeamRoomsContent(),
+            // ActiveTeamRoomsContent(),
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Colors.blueGrey,
           onPressed: (){
               popUpDialog(context);
             },
@@ -123,7 +123,7 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
                           });
 
                         },
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.blueGrey),
                         decoration: InputDecoration(
                             label: Text("Enter a group name"),
                             errorBorder: OutlineInputBorder(
@@ -148,7 +148,7 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
                           });
 
                         },
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.blueGrey),
                         decoration: InputDecoration(
                             label: Text("Enter your team location"),
                             errorBorder: OutlineInputBorder(
@@ -173,7 +173,7 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
                           });
 
                         },
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.blueGrey),
                         decoration: InputDecoration(
                             label: Text("Enter Sports Name"),
                             errorBorder: OutlineInputBorder(
@@ -198,7 +198,7 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
                           });
 
                         },
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.blueGrey),
                         decoration: InputDecoration(
                             label: Text("Number of participants you're looking for:"),
                             errorBorder: OutlineInputBorder(
@@ -246,7 +246,7 @@ class _TeamRoomHomePageState extends State<TeamRoomHomePage> {
                 },
                 child: const Text("CREATE"),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple,
+                  primary: Colors.blueGrey,
                 ),
               )
             ],

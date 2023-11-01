@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../helper/apiUrl.dart';
 import '../models/playAreas.dart';
 
 Future<List<PlayArea>> fetchPlayAreas() async {
-  final response = await http.get(Uri.parse('http://192.168.0.103:8000/restfinal/api/playareas/'));
+  final response = await http.get(Uri.parse('${apiHostUrl}/restfinal/api/playareas/'));
 
   if (response.statusCode == 200) {
     final jsonData = json.decode(response.body) as List;

@@ -1,16 +1,18 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
+import '../helper/apiUrl.dart';
 Future<void> sendingBookingDataToServer({
   required String userName,
   required DateTime playDate,
   required String playAreaSports,
   required String playAreaName,
   required String playAreaVendor,
-  required List<String> playingTime,
+  required String playingTime,
   required String userEmail,
 
 }) async {
-  final apiUrl = 'http://192.168.0.103:8000/restfinal/api/create_booking/'; // Replace with your Django API endpoint
+  final apiUrl = '${apiHostUrl}/restfinal/api/create_booking/'; // Replace with your Django API endpoint
   final headers = {'Content-Type': 'application/json'};
   final finalPlayDate="${playDate.year.toString()}-${playDate.month.toString()}-${playDate.day.toString()}";
   // Convert the DateTime to ISO 8601 string format

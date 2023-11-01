@@ -1,6 +1,7 @@
 import 'package:curved_container/curved_container.dart';
 import 'package:flutter/material.dart';
 import 'package:play_connect/helper/helper_function.dart';
+import 'package:play_connect/pages/booking_page.dart';
 import 'package:play_connect/pages/profile_page.dart';
 import 'package:play_connect/pages/teamroom/teamroom_page.dart';
 import 'package:play_connect/services/auth_services.dart';
@@ -94,7 +95,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 height: 110,
                 width: (MediaQuery.of(context).size.width),
-                margin: EdgeInsets.all(20),
+                margin: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   color: Colors.blueGrey,
                   borderRadius: BorderRadius.circular(10),
@@ -111,13 +112,13 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.w500,
                           ),
                           ),
-                          margin: EdgeInsets.all(6),
+                          margin: EdgeInsets.all(3),
                         ),
                         TextButton(onPressed: (){nextScreen(context, ProfilePage());}, child: Text("See more",style: TextStyle(color: Colors.white),))
                       ],
                     ),
                     Container(
-                      height: 60,
+                      height: 50,
                       color: Colors.blueGrey,
                       margin: EdgeInsets.all(6),
                       child: Row(
@@ -131,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Container(
                                   padding: const EdgeInsets.only(left: 3.0,right: 3,top: 3,bottom: 5),
-                                  child: Text("Bookings Done",style: TextStyle(fontSize: 12,color: Colors.blueGrey[900]),),
+                                  child: Text("Bookings Done",style: TextStyle(fontSize: 8,color: Colors.blueGrey[900]),),
                                 ),
                                 Text("10",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600),)
                               ],
@@ -155,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Container(
                                   padding: const EdgeInsets.only(left: 3.0,right: 3,top: 3,bottom: 5),
-                                  child: Text("Teams Joined",style: TextStyle(fontSize: 12,color: Colors.blueGrey[900]),),
+                                  child: Text("Teams Joined",style: TextStyle(fontSize: 8,color: Colors.blueGrey[900]),),
                                 ),
                                 Text("5",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600),)
                               ],
@@ -227,41 +228,46 @@ class _HomePageState extends State<HomePage> {
 
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Container(
-                  // margin: EdgeInsets.only(bottom: 8,left: 8),
-                  child: Column(
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => BookingPage(),));
+                  },
+                  child: Container(
+                    // margin: EdgeInsets.only(bottom: 8,left: 8),
+                    child: Column(
 
-                    children: [
+                      children: [
 
-                      Row(
-                        children: [
-                          Container(
-                            width: 70.0, // Width of the small container
-                            height: 70.0, // Height of the small container
-                            margin: EdgeInsets.all(8.0),
-                            child: Image.asset('assets/CRICKET.png'),
-                          ),
-                          Container(
-                            width: 70.0, // Width of the small container
-                            height: 70.0, // Height of the small container
-                            margin: EdgeInsets.all(8.0),
-                            child: Image.asset('assets/football.png'),
-                          ),
-                          Container(
-                            width: 70.0, // Width of the small container
-                            height: 70.0, // Height of the small container
-                            margin: EdgeInsets.all(8.0),
-                            child: Image.asset('assets/basketball.png'),
-                          ),
-                          Container(
-                            width: 70.0, // Width of the small container
-                            height: 70.0, // Height of the small container
-                            margin: EdgeInsets.all(8.0),
-                            child: Image.asset('assets/badminton.png'),
-                          ),
-                        ],
-                      ),
-                    ]
+                        Row(
+                          children: [
+                            Container(
+                              width: 70.0, // Width of the small container
+                              height: 70.0, // Height of the small container
+                              margin: EdgeInsets.all(8.0),
+                              child: Image.asset('assets/cricket.png'),
+                            ),
+                            Container(
+                              width: 70.0, // Width of the small container
+                              height: 70.0, // Height of the small container
+                              margin: EdgeInsets.all(8.0),
+                              child: Image.asset('assets/football.png'),
+                            ),
+                            Container(
+                              width: 70.0, // Width of the small container
+                              height: 70.0, // Height of the small container
+                              margin: EdgeInsets.all(8.0),
+                              child: Image.asset('assets/basketball.png'),
+                            ),
+                            Container(
+                              width: 70.0, // Width of the small container
+                              height: 70.0, // Height of the small container
+                              margin: EdgeInsets.all(8.0),
+                              child: Image.asset('assets/badminton.png'),
+                            ),
+                          ],
+                        ),
+                      ]
+                    ),
                   ),
                 ),
               ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:play_connect/helper/helper_function.dart';
 import 'package:play_connect/main.dart';
 import 'package:play_connect/pages/auth/login_page.dart';
+import 'package:play_connect/pages/userForm.dart';
 import 'package:play_connect/services/auth_services.dart';
 import 'package:play_connect/widgets/widgets.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
@@ -37,13 +38,13 @@ class _RegisterPageState extends State<RegisterPage> {
           initialValue: selectedValues,
           title: Text(
             'Favorite Sports',
-            style: TextStyle(color: Colors.deepPurple),
+            style: TextStyle(color: Colors.blueGrey),
           ),
-          selectedColor: Colors.deepPurple, // Customize the selected color
+          selectedColor: Colors.blueGrey, // Customize the selected color
           unselectedColor: Colors.black, // Customize the unselected color
           backgroundColor: Colors.white, // Customize the background color
           itemsTextStyle: TextStyle(color: Colors.black), // Customize item text color
-          selectedItemsTextStyle: TextStyle(color: Colors.deepPurple), // Customize selected item text color
+          selectedItemsTextStyle: TextStyle(color: Colors.blueGrey), // Customize selected item text color
           // searchFieldStyle: TextStyle(color: Colors.white), // Customize search field text color
           searchHintStyle: TextStyle(color: Colors.grey), // Customize search field hint text color
           // confirmButtonTextStyle: TextStyle(color: Colors.white), // Customize confirm button text color
@@ -67,6 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
 
     return _isLoading? Center(child: CircularProgressIndicator(color: Colors.black,),):Scaffold(
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 20),
@@ -76,6 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(height: 20,),
                 const Text("Play Connect",
                   style: TextStyle(
                       fontSize: 35,fontWeight: FontWeight.bold
@@ -84,17 +87,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 2,
                 ),
-                const Text("Create an account to connect with new players and Play along",
+                const Text("Connect with new players and Play along",
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
-                    color: Colors.deepPurple,
+                    color: Colors.blueGrey,
                   ),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
-                Image.asset("assets//register.png"),
+                Image.asset("assets/register.png"),
                 TextFormField(
                     onTap: (){
                       // isTextMailFieldFocused=true;
@@ -103,12 +106,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: textInputDecoration.copyWith(
                       labelText: "Full Name",
                       labelStyle: TextStyle(
-                          color: Colors.deepPurple,
+                          color: Colors.blueGrey,
                           fontWeight: FontWeight.w400
                       ),
                       prefixIcon: Icon(
                           Icons.person_outlined,
-                          color: Colors.deepPurple),
+                          color: Colors.blueGrey),
                     ),
                     onChanged: (val){
                       setState(() {
@@ -131,12 +134,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: textInputDecoration.copyWith(
                       labelText: "Email",
                       labelStyle: TextStyle(
-                          color: Colors.deepPurple,
+                          color: Colors.blueGrey,
                           fontWeight: FontWeight.w400
                       ),
                       prefixIcon: Icon(
                           Icons.mail_outline,
-                          color: Colors.deepPurple),
+                          color: Colors.blueGrey),
                     ),
                     onChanged: (val){
                       setState(() {
@@ -163,12 +166,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   decoration: textInputDecoration.copyWith(
                     labelText: "Password",
                     labelStyle: TextStyle(
-                        color: Colors.deepPurple,
+                        color: Colors.blueGrey,
                         fontWeight: FontWeight.w400
                     ),
                     prefixIcon: Icon(
                         Icons.lock_outline,
-                        color: Colors.deepPurple),
+                        color: Colors.blueGrey),
                   ),
                   onChanged: (val){
                     setState(() {
@@ -194,12 +197,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                   child: InputDecorator(
                     decoration: InputDecoration(
-                      focusColor: Colors.deepPurple,
+                      focusColor: Colors.blueGrey,
                       labelText: 'Favorite Sports',
-                      labelStyle: TextStyle(color: Colors.deepPurple),
+                      labelStyle: TextStyle(color: Colors.blueGrey),
                       prefixIcon: Icon(
                         Icons.sports,
-                        color: Colors.deepPurple,
+                        color: Colors.blueGrey,
                       ),
                       border: OutlineInputBorder(),
                       fillColor: Colors.black,
@@ -212,7 +215,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             sport,
                             style: TextStyle(color: Colors.white),
                           ),
-                          backgroundColor: Colors.deepPurple,
+                          backgroundColor: Colors.blueGrey,
                           onDeleted: () {
                             setState(() {
                               selectedValues.remove(sport);
@@ -236,7 +239,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     child: const Text(
-                      "Sign In",
+                      "Register",
                       style: TextStyle(color: Colors.white,fontSize: 16),
                     ),
                     onPressed: (){
@@ -248,12 +251,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 Text.rich(
                     TextSpan(
                         text: "Already have an account? ",
-                        style: TextStyle(color: Colors.deepPurple,fontSize: 13),
+                        style: TextStyle(color: Colors.blueGrey,fontSize: 13),
                         children: <TextSpan>[
                           TextSpan(
                               text: "Login now",
                               style: TextStyle(
-                                  color: Colors.deepPurple,
+                                  color: Colors.blueGrey,
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline
                               ),
@@ -285,12 +288,12 @@ class _RegisterPageState extends State<RegisterPage> {
           await HelperFunction.saveUserLoggedInStatus(true);
           await HelperFunction.saveUserNameSF(fullName);
           await HelperFunction.saveUserEmailSF(email);
-          nextScreenReplace(context, MyHomePage());
+          nextScreenReplace(context, UserForm());
 
 
         }else{
           setState(() {
-            showSnackBar(context, Colors.deepPurple, value);
+            showSnackBar(context, Colors.blueGrey, value);
             _isLoading=false;
           });
         }

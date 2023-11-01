@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../helper/apiUrl.dart';
+
 Future<void> sendingUserDataToServer({
   required String userName,
   required int userPhoneNo,
@@ -10,7 +12,7 @@ Future<void> sendingUserDataToServer({
   required String userLocation,
   required int userAge,
 }) async {
-  final apiUrl = 'http://192.168.0.103:8000/restfinal/api/users/'; // Replace with your Django API endpoint
+  final apiUrl = '${apiHostUrl}/restfinal/api/users/'; // Replace with your Django API endpoint
   final headers = {'Content-Type': 'application/json'};
 
   // Create a map of user data

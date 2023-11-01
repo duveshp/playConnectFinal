@@ -82,6 +82,19 @@ class DatabaseService{
    groupSearchbyName(String groupName){
     return groupCollection.where("groupName", isEqualTo: groupName).get();
    }
+  groupSearchbySports(String groupSports){
+    return groupCollection.where("groupSports", isEqualTo: groupSports).get();
+  }
+
+  Future<List<QuerySnapshot>> groupSearch(String groupName) async {
+    final nameQuery = groupCollection.where("groupName", isEqualTo: groupName).get();
+    final sportsQuery = groupCollection.where("groupSports", isEqualTo: groupName).get();
+
+    // Use Future.wait to execute both queries concurrently
+    final results = await Future.wait([nameQuery, sportsQuery]);
+
+    return results;
+  }
 
    // function-> bool to hcekck user joined status
   Future<bool> isUserJoined(

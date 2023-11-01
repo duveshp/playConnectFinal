@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: _isSignedIn ? MyBookingsPage():LoginPage(),
+      home: _isSignedIn ? MyHomePage():LoginPage(),
     );
   }
 }
@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark_added),
-            label: 'Bookings',
+            label: 'Notifications',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

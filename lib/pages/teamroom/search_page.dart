@@ -128,6 +128,25 @@ class _SearchPageState extends State<SearchPage> {
       });
     }
   }
+
+  // Future<void> initiateSearchMethodfix() async {
+  //   if (searchController.text.isNotEmpty) {
+  //     setState(() {
+  //       isLoading = true;
+  //     });
+  //
+  //     final groupName = searchController.text;
+  //     final groupSports = searchController.text; // You may need to get the sports value from a different source.
+  //
+  //     final results = await DatabaseService().groupSearch(groupName, groupSports);
+  //
+  //     setState(() {
+  //       searchSnapshot = results;
+  //       isLoading = false;
+  //       hasUserSearched = true;
+  //     });
+  //   }
+  // }
   groupList(){
     return hasUserSearched
         ?ListView.builder(
