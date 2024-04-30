@@ -3,7 +3,6 @@ import 'dart:convert';
 import '../helper/apiUrl.dart';
 import '../models/bookings.dart';
 import 'package:http/http.dart' as http;
-
 Future<List<Booking>> fetchUserBookings(String userEmail) async {
   try {
     // Replace with your Django API endpoint to fetch user bookings
@@ -16,6 +15,9 @@ Future<List<Booking>> fetchUserBookings(String userEmail) async {
       final List<Booking> bookings = jsonData.map((data) {
         return Booking.fromJson(data);
       }).toList();
+
+      // Sort bookings by playAreaDate in descending order
+      bookings.sort((a, b) => b.playAreaDate.compareTo(a.playAreaDate));
 
       return bookings;
     } else {
